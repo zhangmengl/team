@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+    //后台登录
+    Route::view("/login","admin.login");
+    Route::post("/login/loginDo","admin\LoginController@loginDo");
+    Route::get("/login/quit","admin\LoginController@quit");
+    //后台首页
+    Route::get("/admin/admin","admin\AdminController@admin");
+    //后台管理员
+    Route::prefix('/admin')->middleware("islogin")->group(function () {
+        Route::get("/index","admin\AdminController@index");
+    });
