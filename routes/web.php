@@ -26,4 +26,9 @@ Route::get('/', function () {
     //后台管理员
     Route::prefix('/admin')->middleware("islogin")->group(function () {
         Route::get("/index","admin\AdminController@index");
+        Route::get("/create","admin\AdminController@create");
+        Route::post("/store","admin\AdminController@store");
+        Route::get("/edit/{id}","admin\AdminController@edit");
+        Route::post("/update/{id}","admin\AdminController@update");
+        Route::get("/destroy/{id}","admin\AdminController@destroy");
     });
