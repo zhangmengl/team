@@ -18,38 +18,58 @@
         <ul class="nav navbar-nav">
         <!-- 首页 -->
         <li class="active" ><a href="{{url('/admin/admin')}}">首页</a></li>
-	    <!-- 管理员 -->
-        <li class="dropdown"  style="margin-left:25px;">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">管理员<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="{{url('/admin/create')}}">管理员添加</a></li>
-                <li><a href="{{url('/admin/index')}}">管理员列表</a></li>
-            </ul>
-        </li>
-        <!-- 业务员 -->
-        <li class="dropdown"  style="margin-left:25px;">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">业务员<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="{{url('/sale/create')}}">业务员添加</a></li>
-                <li><a href="{{url('/sale/index')}}">业务员列表</a></li>
-            </ul>
-        </li>
-        <!-- 客户 -->
-        <li class="dropdown"  style="margin-left:25px;">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">客户<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="{{url('/client/create')}}">客户添加</a></li>
-                <li><a href="{{url('/client/index')}}">客户列表</a></li>
-            </ul>
-        </li>
-        <!-- 拜访会议 -->
-        <li class="dropdown"  style="margin-left:25px;">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">拜访会议<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="{{url('/meeting/create')}}">拜访会议添加</a></li>
-                <li><a href="{{url('/meeting/index')}}">拜访会议列表</a></li>
-            </ul>
-        </li>
+	    
+        @if(session('userInfo.admin_level')==1)
+            <!-- 客户 -->
+            <li class="dropdown"  style="margin-left:25px;">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">客户<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{url('/client/create')}}">客户添加</a></li>
+                    <li><a href="{{url('/client/index')}}">客户列表</a></li>
+                </ul>
+            </li>
+            <!-- 拜访会议 -->
+            <li class="dropdown"  style="margin-left:25px;">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">拜访会议<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{url('/meeting/create')}}">拜访会议添加</a></li>
+                    <li><a href="{{url('/meeting/index')}}">拜访会议列表</a></li>
+                </ul>
+            </li>
+        @else
+            <!-- 管理员 -->
+            <li class="dropdown"  style="margin-left:25px;">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">管理员<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{url('/admin/create')}}">管理员添加</a></li>
+                    <li><a href="{{url('/admin/index')}}">管理员列表</a></li>
+                </ul>
+            </li>
+            <!-- 业务员 -->
+            <li class="dropdown"  style="margin-left:25px;">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">业务员<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{url('/sale/create')}}">业务员添加</a></li>
+                    <li><a href="{{url('/sale/index')}}">业务员列表</a></li>
+                </ul>
+            </li>
+            <!-- 客户 -->
+            <li class="dropdown"  style="margin-left:25px;">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">客户<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{url('/client/create')}}">客户添加</a></li>
+                    <li><a href="{{url('/client/index')}}">客户列表</a></li>
+                </ul>
+            </li>
+            <!-- 拜访会议 -->
+            <li class="dropdown"  style="margin-left:25px;">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">拜访会议<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{url('/meeting/create')}}">拜访会议添加</a></li>
+                    <li><a href="{{url('/meeting/index')}}">拜访会议列表</a></li>
+                </ul>
+            </li>
+        @endif
         <!-- 个人中心 -->
         <li  style="margin-left:500px;">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">个人中心 <span class="caret"></span></a>
@@ -57,7 +77,7 @@
                     @if(session('userInfo')=='')
                     <li><a href="{{url('/login')}}">登录</a></li>
                     @else
-                    <li><a href="">欢迎@php echo session("userInfo.admin_name") @endphp登录</a></li>
+                    <li>欢迎<b style="color:red">@php echo session("userInfo.admin_name") @endphp</b>登录</li>
                     <li><a href="{{url('/login/quit')}}">退出</a></li>
                 @endif
             </ul>
