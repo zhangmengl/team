@@ -19,14 +19,16 @@
 		<label for="firstname" class="col-sm-4 control-label">用户名</label>
 		<div class="col-sm-4">
 			<input type="text" class="form-control" name="admin_name" id="firstname" 
-				   placeholder="请输入用户名">		   
+				   placeholder="请输入用户名">
+				   {{session('pws')}}		   
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="lastname" class="col-sm-4 control-label">密码</label>
 		<div class="col-sm-4">
 			<input type="password" class="form-control" name="admin_pwd" id="lastname" 
-				   placeholder="请输入密码">	   
+				   placeholder="请输入密码">
+				   {{session('pw')}}	   
 		</div>
 	</div>
 	<div class="form-group">
