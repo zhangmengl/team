@@ -27,3 +27,13 @@ Route::get('/', function () {
     Route::prefix('/admin')->middleware("islogin")->group(function () {
         Route::get("/index","admin\AdminController@index");
     });
+    // 客户
+    Route::prefix('/client')->middleware("islogin")->group(function () {
+        Route::get("/create","admin\ClientController@create");
+        Route::post("/store","admin\ClientController@store");
+        Route::get("/index","admin\ClientController@index");
+        Route::get("/destroy/{id}","admin\ClientController@destroy");
+        Route::get("/edit/{id}","admin\ClientController@edit");
+        Route::post("/update/{id}","admin\ClientController@update");
+    });
+    
