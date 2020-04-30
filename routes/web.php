@@ -41,4 +41,18 @@ Route::get('/', function () {
     //后台管理员
     Route::prefix('/admin')->middleware("islogin")->group(function () {
         Route::get("/index","admin\AdminController@index");
+        Route::get("/create","admin\AdminController@create");
+        Route::post("/store","admin\AdminController@store");
+        Route::get("/edit/{id}","admin\AdminController@edit");
+        Route::post("/update/{id}","admin\AdminController@update");
+        Route::get("/destroy/{id}","admin\AdminController@destroy");
+    });
+    //业务员管理
+    Route::prefix('/sale')->middleware("islogin")->group(function () {
+        Route::get("/index","Admin\SaleController@index");//列表展示
+        Route::get('create','Admin\SaleController@create');//添加方法
+        Route::post('store','Admin\SaleController@store');//执行添加
+        Route::get('edit/{id}','Admin\SaleController@edit');//编辑展示
+        Route::post('update/{id}','Admin\SaleController@update');
+        Route::get('destroy/{id}','Admin\SaleController@destroy');//执行删除
     });
